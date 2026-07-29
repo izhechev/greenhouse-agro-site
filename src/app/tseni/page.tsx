@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { services, site } from "@/lib/site-config";
 import PageHero from "@/components/PageHero";
 import CtaBanner from "@/components/CtaBanner";
+import Calculator from "@/components/Calculator";
 import {
   IconArrow,
   IconBuild,
@@ -60,6 +61,19 @@ export default function TseniPage() {
 
       <section className="bg-charcoal py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <span className="section-eyebrow">Калкулатор</span>
+          <h2 className="mt-3 font-display font-bold text-3xl text-cream">Изчисли ориентировъчна цена сега</h2>
+          <p className="mt-3 max-w-2xl text-cream-dim leading-relaxed">
+            Отговори на няколко въпроса и получи моментална приблизителна оценка — за минута, без чакане.
+          </p>
+          <div className="mt-8">
+            <Calculator />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-charcoal-soft border-y border-line py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <h2 className="font-display font-bold text-2xl text-cream">Как се определя цената</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {factors.map((f) => (
@@ -75,11 +89,11 @@ export default function TseniPage() {
         </div>
       </section>
 
-      <section className="bg-charcoal-soft border-y border-line py-16 sm:py-20">
+      <section className="bg-charcoal py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <h2 className="font-display font-bold text-2xl text-cream">Ценови предложения по дейности</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => {
+            {services.map((s) => {
               const Icon = iconMap[s.icon];
               return (
                 <div
@@ -105,7 +119,7 @@ export default function TseniPage() {
         </div>
       </section>
 
-      <section className="bg-charcoal py-20 sm:py-24">
+      <section className="bg-charcoal-soft border-t border-line py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <CtaBanner />
           <p className="mt-6 text-center text-sm text-cream-dim">
