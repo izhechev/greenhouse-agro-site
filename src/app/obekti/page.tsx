@@ -1,10 +1,9 @@
+import Link from "next/link";
 import type { Metadata } from "next";
-import { services } from "@/lib/site-config";
+import { services, site } from "@/lib/site-config";
 import PageHero from "@/components/PageHero";
 import ProjectTile from "@/components/ProjectTile";
-import ReviewsSection from "@/components/ReviewsSection";
-import CtaBanner from "@/components/CtaBanner";
-import SectionHeading from "@/components/SectionHeading";
+import { IconArrow, IconPhone } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Завършени обекти",
@@ -35,18 +34,21 @@ export default function ObektiPage() {
         </div>
       </section>
 
-      <section className="bg-charcoal-soft border-y border-line py-20 sm:py-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <SectionHeading eyebrow="Наши клиенти" title="Оставяме нашата работа да говори вместо нас" align="center" />
-          <div className="mt-12">
-            <ReviewsSection />
+      <section className="bg-charcoal-soft border-t border-line py-14">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <p className="font-display font-semibold text-lg text-cream">
+            Искате обект като тези? Заявете безплатен оглед.
+          </p>
+          <div className="flex gap-3">
+            <Link href="/bezplaten-ogled" className="btn-primary text-sm !py-2.5 !px-5">
+              Заяви оглед
+              <IconArrow className="w-4 h-4" />
+            </Link>
+            <a href={`tel:${site.phones[0].href}`} className="btn-outline text-sm !py-2.5 !px-5">
+              <IconPhone className="w-4 h-4" />
+              {site.phones[0].display}
+            </a>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-charcoal py-20 sm:py-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <CtaBanner />
         </div>
       </section>
     </>
