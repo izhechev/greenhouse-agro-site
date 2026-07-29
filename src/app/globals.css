@@ -161,3 +161,232 @@ body {
     animation: none;
   }
 }
+
+/* ============================================================
+   "Frutiger Aero" module — used only by the price calculator.
+   Glossy glass, bubbles, blue/teal/green gradients — a
+   deliberately different, playful "gadget" skin scoped to
+   .aero-* classes so it never leaks into the rest of the site.
+   ============================================================ */
+
+.aero-surface {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(255, 255, 255, 0.9), transparent 60%),
+    linear-gradient(180deg, #eaf7ff 0%, #d6eeff 45%, #c3e6f7 100%);
+  color: #0b3a5c;
+}
+
+.aero-bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 32% 28%,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(120, 205, 255, 0.18) 75%,
+    rgba(120, 205, 255, 0.05) 100%
+  );
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes aero-float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-18px) translateX(6px); }
+}
+
+.aero-bubble-float {
+  animation: aero-float 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-bubble-float {
+    animation: none;
+  }
+}
+
+.aero-panel {
+  position: relative;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 20px 45px -15px rgba(20, 90, 160, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.aero-panel::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6%;
+  right: 6%;
+  height: 42%;
+  border-radius: 999px / 60px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.aero-step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  color: #04355e;
+  background: linear-gradient(180deg, #eafcff, #6cc3f0 55%, #1c8bd6);
+  box-shadow: 0 3px 8px rgba(15, 70, 130, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.aero-step-num.done {
+  color: #063d1d;
+  background: linear-gradient(180deg, #eafff2, #6be8a0 55%, #17a558);
+}
+
+.aero-btn {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+  color: #04355e;
+  border: 1px solid #a9d8ef;
+  background: linear-gradient(180deg, #f5fcff 0%, #d3eeff 48%, #a9def0 50%, #8fd0ea 100%);
+  box-shadow: 0 3px 10px rgba(20, 90, 160, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.aero-btn::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5%;
+  right: 5%;
+  height: 40%;
+  border-radius: 999px / 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.aero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(20, 90, 160, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.aero-btn.active {
+  color: #063d1d;
+  border-color: #79d6a3;
+  background: linear-gradient(180deg, #f2fff6 0%, #cdf3db 48%, #8be6ac 50%, #57d488 100%);
+}
+
+.aero-btn-primary {
+  color: #ffffff;
+  border-color: #0d6fae;
+  background: linear-gradient(180deg, #7fd6ff 0%, #2fa8ec 48%, #1a86d0 50%, #0e63a3 100%);
+  text-shadow: 0 1px 2px rgba(0, 30, 60, 0.35);
+}
+
+.aero-btn-ghost {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1.5px dashed #8fc3e0;
+  box-shadow: none;
+  color: #0b3a5c;
+}
+.aero-btn-ghost::after {
+  display: none;
+}
+
+.aero-input {
+  width: 100%;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #04355e;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #a9d8ef;
+  box-shadow: inset 0 1px 4px rgba(20, 90, 160, 0.15);
+}
+.aero-input:focus {
+  outline: none;
+  border-color: #2fa8ec;
+  box-shadow: inset 0 1px 4px rgba(20, 90, 160, 0.15), 0 0 0 3px rgba(47, 168, 236, 0.25);
+}
+
+.aero-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #bfe9ff, #6cc3f0);
+  box-shadow: inset 0 1px 4px rgba(0, 60, 120, 0.35);
+}
+.aero-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #bfe6ff 55%, #4fb3e8 100%);
+  border: 1px solid #1c7dc4;
+  box-shadow: 0 2px 6px rgba(20, 90, 160, 0.5);
+  cursor: pointer;
+}
+.aero-range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #bfe6ff 55%, #4fb3e8 100%);
+  border: 1px solid #1c7dc4;
+  box-shadow: 0 2px 6px rgba(20, 90, 160, 0.5);
+  cursor: pointer;
+}
+
+.aero-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0b3a5c;
+  margin-bottom: 8px;
+}
+
+.aero-qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #04355e;
+  background: linear-gradient(180deg, #f5fcff, #bfe6ff 55%, #7fc7ea);
+  border: 1px solid #a9d8ef;
+  box-shadow: 0 2px 4px rgba(20, 90, 160, 0.3);
+  cursor: pointer;
+}
+
+.aero-result {
+  position: relative;
+  text-align: center;
+  padding: 40px 28px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #ffffff, #eaf8ff 55%, #d3f0ff);
+  border: 2px solid #7fd6ff;
+  box-shadow: 0 20px 50px -12px rgba(20, 90, 160, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.aero-price {
+  background: linear-gradient(135deg, #0f6fb0, #12b866 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
