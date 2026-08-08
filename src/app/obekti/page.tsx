@@ -1,18 +1,76 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { services, site } from "@/lib/site-config";
+import { site } from "@/lib/site-config";
 import PageHero from "@/components/PageHero";
-import ProjectTile from "@/components/ProjectTile";
+import SectionHeading from "@/components/SectionHeading";
 import { IconArrow, IconPhone } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Завършени обекти",
   description:
-    "Разгледайте видовете покривни проекти, които изпълняваме — от пренареждане на керемиди до цялостно изграждане на нови покриви, навсякъде в България.",
+    "Разгледайте снимки от завършени покривни проекти — цялостен ремонт на покрив в с. Марково и други изпълнени обекти в цяла България.",
   alternates: { canonical: "/obekti" },
 };
 
-const gallery = [...services, ...services.slice(0, 3)];
+type Project = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  prefix: string;
+  count: number;
+  alt: string;
+};
+
+const projects: Project[] = [
+  {
+    eyebrow: "Завършен обект",
+    title: "Цялостен ремонт на покрив – с. Марково",
+    subtitle:
+      "Завършен цялостен ремонт на покрив в с. Марково — нова хидроизолация, пренаредени керемиди и довършителни тенекеджийски работи.",
+    prefix: "markovo",
+    count: 9,
+    alt: "Цялостен ремонт на покрив в с. Марково",
+  },
+  {
+    eyebrow: "Нашата работа",
+    title: "Ремонт на покрив",
+    subtitle:
+      "Снимки от процеса на работа по покрива — конструкция, изолация и покривно покритие, изпълнени от нашия екип.",
+    prefix: "pokriv",
+    count: 13,
+    alt: "Ремонт на покрив от екипа на Грийнхаус Агро",
+  },
+];
+
+function ProjectGallery({ project }: { project: Project }) {
+  const images = Array.from({ length: project.count }, (_, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    return `/images/obekti/${project.prefix}-${n}.jpg`;
+  });
+
+  return (
+    <div>
+      <SectionHeading eyebrow={project.eyebrow} title={project.title} subtitle={project.subtitle} />
+      <div className="mt-8 grid gap-5 grid-cols-2 lg:grid-cols-3">
+        {images.map((src, i) => (
+          <div
+            key={src}
+            className="group relative aspect-video overflow-hidden rounded-2xl border border-line"
+          >
+            <Image
+              src={src}
+              alt={`${project.alt} – снимка ${i + 1}`}
+              fill
+              sizes="(min-width: 1024px) 33vw, 50vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ObektiPage() {
   return (
@@ -25,12 +83,10 @@ export default function ObektiPage() {
       />
 
       <section className="bg-charcoal py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <div className="grid gap-5 grid-cols-2 lg:grid-cols-3">
-            {gallery.map((s, i) => (
-              <ProjectTile key={`${s.id}-${i}`} service={s} index={i} />
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 space-y-16 sm:space-y-20">
+          {projects.map((project) => (
+            <ProjectGallery key={project.prefix} project={project} />
+          ))}
         </div>
       </section>
 

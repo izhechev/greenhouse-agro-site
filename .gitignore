@@ -20,6 +20,9 @@
 # production
 /build
 
+# raw photo drops (web copies live in public/images/)
+/images/
+
 # misc
 .DS_Store
 *.pem
