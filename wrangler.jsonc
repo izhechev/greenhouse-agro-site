@@ -8,6 +8,14 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  // Сайтът се публикува само на собствения домейн, не на workers.dev.
+  // Изисква домейнът greenhouse-agro.com да е добавен като zone в Cloudflare
+  // (nameservers, насочени към Cloudflare) преди деплой.
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "greenhouse-agro.com", "custom_domain": true },
+    { "pattern": "www.greenhouse-agro.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
