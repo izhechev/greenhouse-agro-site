@@ -4,8 +4,8 @@ export const site = {
   tagline: "Ремонт на покриви",
   description:
     "Ремонт на покриви в цяла България – пренареждане на керемиди, хидроизолация, тенекеджийски услуги и изграждане на нови покриви. Безплатен оглед с дрон, без авансово плащане, до 10 години гаранция.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://greenhouse-agro.bg",
-  email: "info@greenhouse-agro.bg",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://greenhouse-agro.com",
+  email: "info@greenhouse-agro.com",
   phones: [
     { display: "0899 900 993", href: "+359899900993" },
     { display: "0899 900 994", href: "+359899900994" },
