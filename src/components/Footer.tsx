@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site-config";
 import { IconPhone, IconViber } from "@/components/icons";
+import Logo from "@/components/Logo";
 
 export default function Footer() {
   return (
     <footer className="bg-charcoal-soft border-t border-line">
       <div className="max-w-6xl mx-auto px-6 lg:px-10 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <span className="font-display font-bold text-lg text-cream">
-            Грийнхаус<span className="text-gradient"> Агро</span>
+          <span className="flex items-center gap-2.5 font-display font-bold text-lg text-cream">
+            <Logo className="w-8 h-8 shrink-0" />
+            <span>
+              Грийнхаус<span className="text-gradient"> Агро</span>
+            </span>
           </span>
           <p className="mt-3 text-sm text-cream-dim leading-relaxed">
             Ремонт на покриви в цяла България. Собствен екип, доказани материали и писмена гаранция за всеки обект.

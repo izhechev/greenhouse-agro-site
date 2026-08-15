@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { nav, site } from "@/lib/site-config";
 import { IconArrow, IconPhone, IconViber } from "@/components/icons";
+import Logo from "@/components/Logo";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,8 @@ export default function Header() {
 
       <div className="bg-charcoal/95 backdrop-blur border-b border-line">
         <div className="flex items-center justify-between px-6 lg:px-10 py-4">
-          <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setOpen(false)}>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setOpen(false)}>
+            <Logo className="w-8 h-8 sm:w-9 sm:h-9 shrink-0" />
             <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-cream">
               Грийнхаус<span className="text-gradient"> Агро</span>
             </span>
