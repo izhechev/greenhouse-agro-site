@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { faq, services, site } from "@/lib/site-config";
 import ServiceCard from "@/components/ServiceCard";
@@ -43,6 +44,18 @@ const trustPoints = [
     title: "Открита комуникация",
     text: "Знаете предварително какво, кога и колко ще струва.",
   },
+];
+
+/** Извадка от реалните обекти — пълната галерия е на /obekti. */
+const homeGallery = [
+  "/images/obekti/markovo-01.webp",
+  "/images/obekti/markovo-03.webp",
+  "/images/obekti/markovo-05.webp",
+  "/images/obekti/markovo-07.webp",
+  "/images/obekti/pokriv-02.webp",
+  "/images/obekti/pokriv-06.webp",
+  "/images/obekti/pokriv-11.webp",
+  "/images/obekti/pokriv-12.webp",
 ];
 
 export default function Home() {
@@ -117,6 +130,39 @@ export default function Home() {
             {services.map((s, i) => (
               <ServiceCard key={s.id} service={s} index={i} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Завършени обекти */}
+      <section className="bg-charcoal-soft border-y border-line py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <SectionHeading
+            eyebrow="Завършени обекти"
+            title="Реални покриви, завършени от нашия екип"
+            subtitle="Това не са стокови снимки — всеки кадър е от обект, който сме изпълнили. Разгледайте работата ни, преди да ни се доверите."
+          />
+          <div className="mt-12 grid gap-4 grid-cols-2 lg:grid-cols-4">
+            {homeGallery.map((src, i) => (
+              <div
+                key={src}
+                className="group relative aspect-video overflow-hidden rounded-2xl border border-line"
+              >
+                <Image
+                  src={src}
+                  alt={`Завършен покривен обект от ${site.brand} – снимка ${i + 1}`}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <Link href="/obekti" className="btn-outline text-sm !py-2.5 !px-5">
+              Виж всички обекти
+              <IconArrow className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
