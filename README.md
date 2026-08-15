@@ -35,6 +35,45 @@ npm run dev
 
 Без тези променливи сайтът работи нормално — формата логва запитването в конзолата, а пикселът просто не се зарежда.
 
-## Deploy
+## Снимки
 
-Проектът е готов за деплой във Vercel (`vercel.com/new`, импортирай това repo).
+Снимките на обектите се обработват предварително, защото на безплатния план на
+Cloudflare няма оптимизация по време на заявка (`next/image` е с `unoptimized`).
+
+Слагаш новите снимки в папка под `images/` (тя не влиза в git), добавяш папката в
+`SOURCES` в `scripts/optimize-images.mjs` и пускаш:
+
+```bash
+npm run images
+```
+
+Скриптът смалява до 900px, конвертира към WebP и записва в `public/images/obekti/`.
+
+## Deploy — Cloudflare Workers
+
+Сайтът се хоства на Cloudflare Workers чрез адаптера
+[`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) (безплатен план).
+
+Еднократно, първия път:
+
+```bash
+npx wrangler login
+```
+
+След това при всяка промяна:
+
+```bash
+npm run deploy
+```
+
+`npm run preview` пуска сайта локално в истинската Workers среда преди деплой.
+
+Env променливите в production се задават като secrets, не във файл:
+
+```bash
+npx wrangler secret put RESEND_API_KEY
+```
+
+`NEXT_PUBLIC_*` променливите трябва да са налични по време на билда (те се
+вграждат в HTML-а), затова се задават в `.env.local` локално или в
+Build variables, ако се използва Workers Builds.

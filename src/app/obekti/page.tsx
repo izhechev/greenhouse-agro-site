@@ -46,7 +46,7 @@ const projects: Project[] = [
 function ProjectGallery({ project }: { project: Project }) {
   const images = Array.from({ length: project.count }, (_, i) => {
     const n = String(i + 1).padStart(2, "0");
-    return `/images/obekti/${project.prefix}-${n}.jpg`;
+    return `/images/obekti/${project.prefix}-${n}.webp`;
   });
 
   return (
