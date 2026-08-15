@@ -118,12 +118,12 @@ function AddonRow({
 function Stepper({ label, value, onChange, max = 20 }: { label: string; value: number; onChange: (v: number) => void; max?: number }) {
   return (
     <div className="flex items-center justify-between gap-4 py-2">
-      <span className="text-sm font-semibold text-[#0b3a5c]">{label}</span>
+      <span className="text-sm font-semibold text-cream">{label}</span>
       <div className="flex items-center gap-3">
         <button type="button" className="aero-qty-btn" onClick={() => onChange(Math.max(0, value - 1))}>
           −
         </button>
-        <span className="w-6 text-center font-bold text-[#04355e]">{value}</span>
+        <span className="w-6 text-center font-bold text-cream">{value}</span>
         <button type="button" className="aero-qty-btn" onClick={() => onChange(Math.min(max, value + 1))}>
           +
         </button>
@@ -268,12 +268,12 @@ export default function Calculator() {
               {step > n ? "✓" : n}
             </div>
           ))}
-          <span className="text-sm font-semibold text-[#0b3a5c]/70">Ориентировъчна цена за 60 секунди</span>
+          <span className="text-sm font-semibold text-cream-dim">Ориентировъчна цена за 60 секунди</span>
         </div>
 
         {step === 1 && (
           <div className="aero-panel p-6 sm:p-8">
-            <h3 className="font-display font-bold text-xl text-[#04355e] mb-6">Каква услуга търсите?</h3>
+            <h3 className="font-display font-bold text-xl text-cream mb-6">Каква услуга търсите?</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {SERVICES.map((s) => (
                 <button
@@ -300,7 +300,7 @@ export default function Calculator() {
 
         {step === 2 && (
           <div className="aero-panel p-6 sm:p-8 flex flex-col gap-6">
-            <h3 className="font-display font-bold text-xl text-[#04355e]">Основни параметри</h3>
+            <h3 className="font-display font-bold text-xl text-cream">Основни параметри</h3>
 
             <div>
               <span className="aero-label">Квадратура на покрива (м²)</span>
@@ -379,8 +379,8 @@ export default function Calculator() {
         {step === 3 && (
           <div className="flex flex-col gap-4">
             <div className="aero-panel p-6 sm:p-8">
-              <h3 className="font-display font-bold text-xl text-[#04355e] mb-1">Допълнителни дейности</h3>
-              <p className="text-sm text-[#0b3a5c]/70">Прескочи каквото не важи за твоя обект.</p>
+              <h3 className="font-display font-bold text-xl text-cream mb-1">Допълнителни дейности</h3>
+              <p className="text-sm text-cream-dim">Прескочи каквото не важи за твоя обект.</p>
             </div>
 
             <AddonRow label="Улуци и казанчета" mode={uluci} onModeChange={setUluci} lm={uluciLm} onLmChange={setUluciLm} autoLm={autoLm.uluci} />
@@ -445,11 +445,11 @@ export default function Calculator() {
         {step === 4 && (
           <div className="flex flex-col gap-6">
             <div className="aero-result">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0b3a5c]/60">Ориентировъчна цена с труд и материали</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-cream-dim">Ориентировъчна цена с труд и материали</p>
               <p className="aero-price font-display font-extrabold text-5xl sm:text-6xl mt-3">
                 {fmt(total * (1 - ESTIMATE_MARGIN))} – {fmt(total * (1 + ESTIMATE_MARGIN))} {CURRENCY}
               </p>
-              <p className="mt-3 text-sm text-[#0b3a5c]/70">
+              <p className="mt-3 text-sm text-cream-dim">
                 {serviceName || "Допълнителни дейности"} {roofRelevant && `· ${area} м² · ${roofLabel}`}
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
@@ -462,7 +462,7 @@ export default function Calculator() {
                   {site.phones[0].display}
                 </a>
               </div>
-              <p className="mt-5 text-xs text-[#0b3a5c]/60 leading-relaxed max-w-md mx-auto">
+              <p className="mt-5 text-xs text-cream-dim leading-relaxed max-w-md mx-auto">
                 Това е ориентировъчна оценка на база средни пазарни цени. Точната цена се определя само след безплатен оглед на място.
               </p>
             </div>
